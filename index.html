@@ -125,18 +125,29 @@
          var gamma = event.gamma;
          var alpha = event.alpha;
 
+         var rotationX = 0;
+         if (gamma < 0) {
+            rotationX = 90 + gamma;
+         } else {
+            rotationX = 90 - gamma;
+         }
+
          const h1 = document.getElementsByTagName('h1')[0];
          h1.innerText = `alpha: ${alpha.toFixed(1)}, gamma: ${gamma.toFixed(1)}`;
 
          // var rotationX = gamma > 0 ? 90 - gamma : -90 - gamma;
 
          camera.rotation.set(
-            0,
+            THREE.MathUtils.degToRad(rotationX),
             THREE.MathUtils.degToRad(event.alpha),
             0
          );
       },
       true);
+
+      function animate(t) {
+         // camera.rotation.x = t;
+      }
    </script>
 </body>
 </html>
