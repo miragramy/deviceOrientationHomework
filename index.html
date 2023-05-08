@@ -125,6 +125,15 @@
          var gamma = event.gamma;
          var alpha = event.alpha;
 
+
+         var rotationX, rotationY;
+
+         if (gamma > 0) {
+            rotationY = 90 - gamma;
+         } else {
+            rotationX = alpha + 180;
+            rotationY = -90- gamma;
+         }
          // var rotationX = 0;
          // if (gamma < 0) {
          //    rotationX = 90 + gamma;
@@ -135,11 +144,16 @@
          const h1 = document.getElementsByTagName('h1')[0];
          h1.innerText = `alpha: ${alpha.toFixed(1)}, gamma: ${gamma.toFixed(1)}`;
 
-         // var rotationX = gamma > 0 ? 90 - gamma : -90 - gamma;
+
+         // camera.rotation.set(
+         //    THREE.MathUtils.degToRad(event.alpha),
+         //    THREE.MathUtils.degToRad(-gamma),
+         //    0
+         // );
 
          camera.rotation.set(
-            THREE.MathUtils.degToRad(-gamma),
-            THREE.MathUtils.degToRad(event.alpha),
+            THREE.MathUtils(rotationX),
+            THREE.MathUtils(rotationY),
             0
          );
       },
