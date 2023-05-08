@@ -11,6 +11,8 @@
    <script src="vax.js"></script>
 </head>
 <body>
+   <h1>
+   </h1>
    <script>
       // vaxInitParallax();
       vaxInit();
@@ -122,6 +124,9 @@
       window.addEventListener('deviceorientation', (event) => {
          var gamma = event.gamma;
          var alpha = event.alpha;
+
+         const h1 = document.getElementsByTagName('h1')[0];
+         h1.innerText = `alpha: ${alpha}, gamma: ${gamma}`;
 
          // var rotationX = gamma > 0 ? 90 - gamma : -90 - gamma;
 
