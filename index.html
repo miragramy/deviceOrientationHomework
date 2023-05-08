@@ -12,15 +12,118 @@
 </head>
 <body>
    <script>
-      vaxInitParallax();
+      // vaxInitParallax();
+      vaxInit();
 
-      // little test to see that everything is working
+      light.position.set(0, 0, 0);
+      light.intensity = 1;
+
       var cube = new THREE.Mesh(
-         new THREE.BoxGeometry(10, 10, 10),
-         new THREE.MeshLambertMaterial({color: 'green'})
+         new THREE.BoxGeometry(60, 60, 60, 15, 15),
+         new THREE.MeshStandardMaterial({color: 'green',
+                                        side: THREE.DoubleSide})
       );
 
       scene.add(cube);
+
+      var wireframe = new THREE.LineSegments(new THREE.WireframeGeometry(cube.geometry));
+
+      cube.add(wireframe);
+
+      camera.position.set(0, 0, 0);
+
+      colors = [
+         'pink',
+         'blue',
+         'yellow',
+         'black',
+         'white',
+         'orange',
+         'red',
+         'purple',
+         'aqua',
+         'gray'
+      ]
+
+      // Всяка страна на куба ще има по 100 конусчета
+
+      for (var i = 0; i < 100; i++) {
+         var cone = new THREE.Mesh(
+            new THREE.ConeGeometry(1, 4, 32),
+            new THREE.MeshStandardMaterial({color: colors[THREE.MathUtils.randInt(0, 9)]})
+         )
+
+         cone.position.z = -30;
+         cone.position.x = THREE.MathUtils.randInt(-30, 30);
+         cone.position.y = THREE.MathUtils.randInt(-30, 30);
+         cube.add(cone);
+      }
+
+      for (var i = 0; i < 100; i++) {
+         var cone = new THREE.Mesh(
+            new THREE.ConeGeometry(1, 4, 32),
+            new THREE.MeshStandardMaterial({color: colors[THREE.MathUtils.randInt(0, 9)]})
+         )
+
+         cone.position.z = 30;
+         cone.position.x = THREE.MathUtils.randInt(-30, 30);
+         cone.position.y = THREE.MathUtils.randInt(-30, 30);
+         cube.add(cone);
+      }
+
+      for (var i = 0; i < 100; i++) {
+         var cone = new THREE.Mesh(
+            new THREE.ConeGeometry(1, 4, 32),
+            new THREE.MeshStandardMaterial({color: colors[THREE.MathUtils.randInt(0, 9)]})
+         )
+
+         cone.position.x = -30;
+         cone.position.z = THREE.MathUtils.randInt(-30, 30);
+         cone.position.y = THREE.MathUtils.randInt(-30, 30);
+         cube.add(cone);
+      }
+
+      for (var i = 0; i < 100; i++) {
+         var cone = new THREE.Mesh(
+            new THREE.ConeGeometry(1, 4, 32),
+            new THREE.MeshStandardMaterial({color: colors[THREE.MathUtils.randInt(0, 9)]})
+         )
+
+         cone.position.x = 30;
+         cone.position.z = THREE.MathUtils.randInt(-30, 30);
+         cone.position.y = THREE.MathUtils.randInt(-30, 30);
+         cube.add(cone);
+      }
+
+      for (var i = 0; i < 100; i++) {
+         var cone = new THREE.Mesh(
+            new THREE.ConeGeometry(1, 4, 32),
+            new THREE.MeshStandardMaterial({color: colors[THREE.MathUtils.randInt(0, 9)]})
+         )
+
+         cone.position.y = -30;
+         cone.position.z = THREE.MathUtils.randInt(-30, 30);
+         cone.position.x = THREE.MathUtils.randInt(-30, 30);
+         cube.add(cone);
+      }
+
+      for (var i = 0; i < 100; i++) {
+         var cone = new THREE.Mesh(
+            new THREE.ConeGeometry(1, 4, 32),
+            new THREE.MeshStandardMaterial({color: colors[THREE.MathUtils.randInt(0, 9)]})
+         )
+
+         cone.position.y = 30;
+         cone.position.z = THREE.MathUtils.randInt(-30, 30);
+         cone.position.x = THREE.MathUtils.randInt(-30, 30);
+         cube.add(cone);
+      }
+
+
+
+      function animate (t) {
+         cube.rotation.set(t, t, t);
+      }
    </script>
 </body>
 </html>
