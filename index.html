@@ -142,23 +142,23 @@
          // );
 
          var alpha = event.alpha,
-					gamma = event.gamma;
+				 gamma = event.gamma;
 
-				if( alpha === null ) return;
+			if( alpha === null ) return;
 
-				if( gamma>=0 )
-					gamma = 90-gamma;
-				else
-				{
-					alpha = alpha+180;
-					gamma = -90-gamma;
-				}
+         if( gamma>=0 )
+            gamma = 90-gamma;
+         else
+         {
+            alpha = alpha+180;
+            gamma = -90-gamma;
+         }
 
-				alpha = THREE.Math.degToRad( alpha );
-				gamma = THREE.Math.degToRad( gamma );
+         alpha = THREE.MathUtils.degToRad( alpha );
+         gamma = THREE.MathUtils.degToRad( gamma );
 
 
-				camera.rotation.set( gamma, alpha, 0, 'YXZ' );
+         camera.rotation.set( gamma, alpha, 0, 'YXZ' );
       },
       true);
 
