@@ -127,6 +127,7 @@
 
          // if (gamma < 0) {
          //    rotationX = 90 + gamma;
+         //    alpha += 180;
          // } else {
          //    rotationX = 90 - gamma;
          // }
@@ -136,9 +137,10 @@
 
 
          // camera.rotation.set(
+         //    THREE.MathUtils.degToRad(gamma),
+         //    THREE.MathUtils.degToRad(alpha),
          //    0,
-         //    THREE.MathUtils.degToRad(event.alpha),
-         //    THREE.MathUtils.degToRad(gamma)
+         //    'YXZ'
          // );
 
          var alpha = event.alpha,
@@ -150,7 +152,7 @@
             gamma = 90-gamma;
          else
          {
-            alpha = alpha+180;
+            // alpha = alpha+180;
             gamma = -90-gamma;
          }
 
@@ -158,7 +160,7 @@
          gamma = THREE.MathUtils.degToRad( gamma );
 
 
-         camera.rotation.set( gamma, alpha, 0, 'YXZ' );
+         camera.rotation.set( gamma, alpha, 0, 'YXZ');
       },
       true);
 
