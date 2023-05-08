@@ -125,37 +125,27 @@
          var gamma = event.gamma;
          var alpha = event.alpha;
 
-
-         var rotationX, rotationY;
-
-         if (gamma > 0) {
-            rotationY = 90 - gamma;
+         if (gamma < 0) {
+            rotationX = 90 + gamma;
          } else {
-            rotationX = alpha + 180;
-            rotationY = -90- gamma;
+            rotationX = 90 - gamma;
          }
-         // var rotationX = 0;
-         // if (gamma < 0) {
-         //    rotationX = 90 + gamma;
-         // } else {
-         //    rotationX = 90 - gamma;
-         // }
 
          const h1 = document.getElementsByTagName('h1')[0];
          h1.innerText = `alpha: ${alpha.toFixed(1)}, gamma: ${gamma.toFixed(1)}`;
 
 
-         // camera.rotation.set(
-         //    THREE.MathUtils.degToRad(event.alpha),
-         //    THREE.MathUtils.degToRad(-gamma),
-         //    0
-         // );
-
          camera.rotation.set(
-            THREE.MathUtils(rotationX),
-            THREE.MathUtils(rotationY),
+            THREE.MathUtils.degToRad(gamma),
+            THREE.MathUtils.degToRad(event.alpha),
             0
          );
+
+         // camera.rotation.set(
+         //    THREE.MathUtils.degToRad(rotationX),
+         //    THREE.MathUtils.degToRad(rotationY),
+         //    0
+         // );
       },
       true);
 
