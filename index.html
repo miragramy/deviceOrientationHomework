@@ -156,6 +156,14 @@
             gamma = -90-gamma;
          }
 
+         if (gamma >= 90) {
+            gamma = 89;
+         }
+
+         if (gamma <= -90) {
+            gamma = -89;
+         }
+
          alpha = THREE.MathUtils.degToRad( alpha );
          gamma = THREE.MathUtils.degToRad( gamma );
 
