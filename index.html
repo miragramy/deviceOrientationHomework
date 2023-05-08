@@ -122,24 +122,43 @@
       }
 
       window.addEventListener('deviceorientation', (event) => {
-         var gamma = event.gamma;
-         var alpha = event.alpha;
+         // var gamma = event.gamma;
+         // var alpha = event.alpha;
 
-         if (gamma < 0) {
-            rotationX = 90 + gamma;
-         } else {
-            rotationX = 90 - gamma;
-         }
+         // if (gamma < 0) {
+         //    rotationX = 90 + gamma;
+         // } else {
+         //    rotationX = 90 - gamma;
+         // }
 
-         const h1 = document.getElementsByTagName('h1')[0];
-         h1.innerText = `alpha: ${alpha.toFixed(1)}, gamma: ${gamma.toFixed(1)}`;
+         // const h1 = document.getElementsByTagName('h1')[0];
+         // h1.innerText = `alpha: ${alpha.toFixed(1)}, gamma: ${gamma.toFixed(1)}`;
 
 
-         camera.rotation.set(
-            0,
-            THREE.MathUtils.degToRad(event.alpha),
-            THREE.MathUtils.degToRad(gamma)
-         );
+         // camera.rotation.set(
+         //    0,
+         //    THREE.MathUtils.degToRad(event.alpha),
+         //    THREE.MathUtils.degToRad(gamma)
+         // );
+
+         var alpha = event.alpha,
+					gamma = event.gamma;
+
+				if( alpha === null ) return;
+
+				if( gamma>=0 )
+					gamma = 90-gamma;
+				else
+				{
+					alpha = alpha+180;
+					gamma = -90-gamma;
+				}
+
+				alpha = THREE.Math.degToRad( alpha );
+				gamma = THREE.Math.degToRad( gamma );
+
+
+				camera.rotation.set( gamma, alpha, 0, 'YXZ' );
       },
       true);
 
