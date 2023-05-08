@@ -167,6 +167,8 @@
          alpha = THREE.MathUtils.degToRad( alpha );
          gamma = THREE.MathUtils.degToRad( gamma );
 
+         const h1 = document.getElementsByTagName('h1')[0];
+         h1.innerText = `alpha: ${alpha.toFixed(1)}, gamma: ${gamma.toFixed(1)}`;
 
          camera.rotation.set( gamma, alpha, 0, 'YXZ');
       },
