@@ -1,1 +1,26 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Домашно 3</title>
+
+   <script src="three.min.js"></script>
+   <script src="StereoEffect.js"></script>
+   <script src="vax.js"></script>
+</head>
+<body>
+   <script>
+      vaxInitParallax();
+
+      // little test to see that everything is working
+      var cube = new THREE.Mesh(
+         new THREE.BoxGeometry(10, 10, 10),
+         new THREE.MeshLambertMaterial({color: 'green'})
+      );
+
+      scene.add(cube);
+   </script>
+</body>
+</html>
