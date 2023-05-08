@@ -119,11 +119,19 @@
          cube.add(cone);
       }
 
+      window.addEventListener('deviceorientation', (event) => {
+         var gamma = event.gamma;
+         var alpha = event.alpha;
 
+         // var rotationX = gamma > 0 ? 90 - gamma : -90 - gamma;
 
-      function animate (t) {
-         cube.rotation.set(t, t, t);
-      }
+         camera.rotation.set(
+            0,
+            THREE.MathUtils.degToRad(event.alpha),
+            0
+         );
+      },
+      true);
    </script>
 </body>
 </html>
