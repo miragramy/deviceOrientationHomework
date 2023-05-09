@@ -11,8 +11,6 @@
    <script src="vax.js"></script>
 </head>
 <body>
-   <h1>
-   </h1>
    <script>
       // vaxInitParallax();
       vaxInit();
@@ -23,7 +21,7 @@
       var cube = new THREE.Mesh(
          new THREE.BoxGeometry(60, 60, 60, 15, 15),
          new THREE.MeshStandardMaterial({color: 'green',
-                                        side: THREE.DoubleSide})
+                                         side: THREE.DoubleSide})
       );
 
       scene.add(cube);
@@ -152,24 +150,12 @@
             gamma = 90-gamma;
          else
          {
+            alpha = alpha+180;
             gamma = -90-gamma;
          }
 
-         alpha = alpha+180;
-
          alpha = THREE.MathUtils.degToRad( alpha );
          gamma = THREE.MathUtils.degToRad( gamma );
-
-         if (gamma >= 1.5) {
-            gamma = 1.5;
-         }
-
-         if (gamma <= -1.5) {
-            gamma = -1.5;
-         }
-
-         const h1 = document.getElementsByTagName('h1')[0];
-         h1.innerText = `alpha: ${alpha.toFixed(1)}, gamma: ${gamma.toFixed(1)}`;
 
          camera.rotation.set( gamma, alpha, 0, 'YXZ');
       },
