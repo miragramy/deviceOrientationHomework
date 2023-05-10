@@ -12,8 +12,7 @@
 </head>
 <body>
    <script>
-      // vaxInitParallax();
-      vaxInit();
+      vaxInitParallax();
 
       light.position.set(0, 0, 0);
       light.intensity = 1;
@@ -129,12 +128,8 @@
 
          var rotationX = event.gamma;
          var rotationY = event.alpha;
-         // var gamma = event.gamma;
-         // var alpha = event.alpha;
 
-         // var rotationX = 0, rotationY = 0;
-
-         if( event.gamma>=0 )
+         if( event.gamma >= 0 )
          {
             rotationX = 90 - rotationX;
          }
