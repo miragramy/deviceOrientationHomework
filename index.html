@@ -127,20 +127,23 @@
       window.addEventListener('deviceorientation', (event) => {
 			if( event.alpha === null ) return;
 
-         var rotationX = 0, rotationY = 0;
+         var gamma = event.gamma;
+         var alpha = event.alpha;
 
-         if( event.gamma>=0 )
+         // var rotationX = 0, rotationY = 0;
+
+         if( gamma>=0 )
          {
-            rotationX = 90 - event.gamma;
+            gamma = 90 - gamma;
          }
          else
          {
-            rotationY = event.alpha + 180;
-            rotationX = -90 - event.gamma;
+            alpha = alpha + 180;
+            gamma = -90 - gamma;
          }
 
-         camera.rotation.set( THREE.MathUtils.degToRad(rotationX),
-                              THREE.MathUtils.degToRad(rotationY),
+         camera.rotation.set( THREE.MathUtils.degToRad(gamma),
+                              THREE.MathUtils.degToRad(alpha),
                               0,
                               'YXZ');
       }, true);
