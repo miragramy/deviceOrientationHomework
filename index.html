@@ -46,8 +46,8 @@
       ]
 
       // Всяка страна на куба ще има по 100 конусчета
-
-      for (var i = 0; i < 100; i++) {
+      for (var i = 0; i < 100; i++)
+      {
          var cone = new THREE.Mesh(
             new THREE.ConeGeometry(1, 4, 32),
             new THREE.MeshStandardMaterial({color: colors[THREE.MathUtils.randInt(0, 9)]})
@@ -59,7 +59,8 @@
          cube.add(cone);
       }
 
-      for (var i = 0; i < 100; i++) {
+      for (var i = 0; i < 100; i++)
+      {
          var cone = new THREE.Mesh(
             new THREE.ConeGeometry(1, 4, 32),
             new THREE.MeshStandardMaterial({color: colors[THREE.MathUtils.randInt(0, 9)]})
@@ -71,7 +72,8 @@
          cube.add(cone);
       }
 
-      for (var i = 0; i < 100; i++) {
+      for (var i = 0; i < 100; i++)
+      {
          var cone = new THREE.Mesh(
             new THREE.ConeGeometry(1, 4, 32),
             new THREE.MeshStandardMaterial({color: colors[THREE.MathUtils.randInt(0, 9)]})
@@ -83,7 +85,8 @@
          cube.add(cone);
       }
 
-      for (var i = 0; i < 100; i++) {
+      for (var i = 0; i < 100; i++)
+      {
          var cone = new THREE.Mesh(
             new THREE.ConeGeometry(1, 4, 32),
             new THREE.MeshStandardMaterial({color: colors[THREE.MathUtils.randInt(0, 9)]})
@@ -95,7 +98,8 @@
          cube.add(cone);
       }
 
-      for (var i = 0; i < 100; i++) {
+      for (var i = 0; i < 100; i++)
+      {
          var cone = new THREE.Mesh(
             new THREE.ConeGeometry(1, 4, 32),
             new THREE.MeshStandardMaterial({color: colors[THREE.MathUtils.randInt(0, 9)]})
@@ -107,7 +111,8 @@
          cube.add(cone);
       }
 
-      for (var i = 0; i < 100; i++) {
+      for (var i = 0; i < 100; i++)
+      {
          var cone = new THREE.Mesh(
             new THREE.ConeGeometry(1, 4, 32),
             new THREE.MeshStandardMaterial({color: colors[THREE.MathUtils.randInt(0, 9)]})
@@ -120,50 +125,25 @@
       }
 
       window.addEventListener('deviceorientation', (event) => {
-         // var gamma = event.gamma;
-         // var alpha = event.alpha;
+			if( event.alpha === null ) return;
 
-         // if (gamma < 0) {
-         //    rotationX = 90 + gamma;
-         //    alpha += 180;
-         // } else {
-         //    rotationX = 90 - gamma;
-         // }
+         var rotationX = 0, rotationY = 0;
 
-         // const h1 = document.getElementsByTagName('h1')[0];
-         // h1.innerText = `alpha: ${alpha.toFixed(1)}, gamma: ${gamma.toFixed(1)}`;
-
-
-         // camera.rotation.set(
-         //    THREE.MathUtils.degToRad(gamma),
-         //    THREE.MathUtils.degToRad(alpha),
-         //    0,
-         //    'YXZ'
-         // );
-
-         var alpha = event.alpha,
-				 gamma = event.gamma;
-
-			if( alpha === null ) return;
-
-         if( gamma>=0 )
-            gamma = 90-gamma;
+         if( event.gamma>=0 )
+         {
+            rotationX = 90 - event.gamma;
+         }
          else
          {
-            alpha = alpha+180;
-            gamma = -90-gamma;
+            rotationY = event.alpha + 180;
+            rotationX = -90 - event.gamma;
          }
 
-         alpha = THREE.MathUtils.degToRad( alpha );
-         gamma = THREE.MathUtils.degToRad( gamma );
-
-         camera.rotation.set( gamma, alpha, 0, 'YXZ');
-      },
-      true);
-
-      function animate(t) {
-         // camera.rotation.x = t;
-      }
+         camera.rotation.set( THREE.MathUtils.degToRad(rotationX),
+                              THREE.MathUtils.degToRad(rotationY),
+                              0,
+                              'YXZ');
+      }, true);
    </script>
 </body>
 </html>
